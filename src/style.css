@@ -1,0 +1,338 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+}
+
+:root {
+  --main-projects-color: rgb(229, 243, 246);
+  --main-projects-color-hover: rgb(193, 233, 242);
+  --main-projects-color-delete: red;
+  --main-projects-color-add-todo: invert(6%) sepia(90%) saturate(7146%)
+    hue-rotate(248deg) brightness(136%) contrast(146%);
+  --main-todos-color: rgb(235, 243, 245);
+  --main-todos-color-hover: rgb(193, 233, 242);
+  --main-projects-todos-box-shadow: 4px 4px 10px 1px rgba(6, 6, 6, 0.2);
+}
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto Regular"), url("Roboto-Regular.ttf");
+  font-weight: 200;
+}
+
+body {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  min-height: 650px;
+}
+
+.main-body {
+  display: grid;
+  grid-template-rows: minmax(50px, 1fr) 4fr;
+  background-color: white;
+  width: 98%;
+  height: 95%;
+  border-radius: 5px;
+  overflow: auto;
+  min-height: fit-content;
+}
+
+.top {
+  border: 3px rgb(60, 59, 59) solid;
+  grid-row: 1/2;
+  background-color: rgb(203, 246, 254);
+}
+
+.logo {
+  height: 100%;
+  width: auto;
+}
+
+.bottom {
+  border: 3px rgb(2, 2, 2) solid;
+  grid-row: 2/3;
+  display: grid;
+  /* Add with JS when using three columns */
+  grid-template-columns: 1fr 1fr 1fr;
+  /* Add with JS when using two columns */
+  /* grid-template-columns: 1fr 1fr; */
+}
+
+.left,
+.center {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: max-content;
+}
+
+.left {
+  grid-auto-rows: 28%;
+}
+
+.center {
+  grid-auto-rows: 22%;
+}
+
+.right {
+  overflow: scroll;
+  padding: 10px;
+  min-width: min-content;
+}
+
+.new-todo-div {
+  min-width: fit-content;
+  padding: 0 5px 0 5px;
+}
+
+.project {
+  background-color: var(--main-projects-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: max-content;
+  box-shadow: var(--main-projects-todos-box-shadow);
+  border: 1px solid rgb(204, 204, 204);
+  padding: 0 6px 0 6px;
+}
+.project-refresh:hover {
+  background-color: var(--main-projects-color-hover);
+}
+
+.project-refresh-selected {
+  background-color: var(--main-projects-color-hover);
+}
+
+.project-delete:hover {
+  color: var(--main-projects-color-delete);
+  cursor: url("img/delete_forever.png"), pointer;
+}
+
+.add-pointer:hover,
+.add-project:hover {
+  filter: var(--main-projects-color-add-todo);
+}
+
+.add-project-form ul {
+  list-style: none;
+}
+
+.add-project-form li {
+  padding-top: 5px;
+}
+
+.project-buttons-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-buttons-form input {
+  width: 50%;
+  cursor: pointer;
+}
+
+.todo {
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 8px;
+  background-color: var(--main-todos-color);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  justify-content: space-between;
+  box-shadow: var(--main-projects-todos-box-shadow);
+}
+
+.todo-priority-low {
+  border-right: 10px rgb(79, 168, 34) solid;
+}
+.todo-priority-medium {
+  border-right: 10px rgb(241, 163, 39) solid;
+}
+.todo-priority-high {
+  border-right: 10px rgb(239, 65, 42) solid;
+}
+
+.todo:hover {
+  background-color: var(--main-todos-color-hover);
+}
+
+.todo-selected {
+  background-color: var(--main-todos-color-hover);
+}
+
+.todo-btns {
+  display: flex;
+  align-items: center;
+}
+
+.todo-btns > span,
+.completed-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+}
+
+h5 {
+  padding-bottom: 4px;
+}
+
+.bin {
+  margin-left: 10px;
+}
+
+.selected-todo {
+  border-radius: 8px;
+  border: 1px solid rgb(204, 204, 204);
+  height: 100%;
+  box-shadow: var(--main-projects-todos-box-shadow);
+  background-color: var(--main-todos-color);
+}
+
+h5 + p {
+  font-size: 0.7rem;
+}
+
+.todo-details-list {
+  padding: 15px;
+  list-style: none;
+}
+
+.selected-todo > h3 {
+  padding: 15px 0 0 15px;
+}
+
+.todo-detail-list-item {
+  padding-bottom: 15px;
+}
+
+.todo-notes > p {
+  color: rgb(0, 0, 2);
+  max-height: 100px;
+  overflow: auto;
+}
+
+img {
+  width: 30px;
+}
+
+.add-todo-form-list {
+  list-style: none;
+  border-left: rgb(208, 207, 207) 1px solid;
+  border-right: rgb(208, 207, 207) 1px solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-shadow: 5px 1px 10px 1px rgba(6, 6, 6, 0.2);
+  background-color: rgb(233, 244, 246);
+}
+
+.add-todo-form-list > * {
+  width: 200px;
+}
+
+textarea {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.add-todo-form-notes-list {
+  padding: 15px;
+  list-style: none;
+  box-shadow: var(--main-projects-todos-box-shadow);
+  border-left: rgb(208, 207, 207) 1px solid;
+  border-right: rgb(208, 207, 207) 1px solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.add-todo-form-notes-list > li {
+  padding-top: 20px;
+}
+
+textarea {
+  border: 1px solid rgb(216, 214, 214);
+  border-radius: 5px;
+}
+
+.add-todo-form-submit-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit {
+  width: 15%;
+  min-width: 50px;
+}
+
+.add-todo,
+.add-project,
+.project-refresh,
+.todo,
+.bin,
+.add-pointer {
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  font-size: 1em;
+}
+.center-add-todo-div {
+  justify-self: center;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-add-todo-button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.project-delete {
+  align-self: flex-end;
+  padding-right: 2px;
+}
+
+input,
+select {
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+
+input {
+  padding: 1px 4px 1px 4px;
+}
+
+.todo-detail-list-item > p,
+.todo-detail-list-item > p > select,
+.todo-detail-list-item > p > input {
+  color: grey;
+}
+
+.detailed-todo-priority-low {
+  box-shadow: 4px 4px 10px 1px rgba(79, 168, 34, 0.5);
+}
+.detailed-todo-priority-medium {
+  box-shadow: 4px 4px 10px 1px rgba(241, 163, 39, 0.5);
+}
+.detailed-todo-priority-high {
+  box-shadow: 4px 4px 10px 1px rgb(239, 65, 42, 0.5);
+}
