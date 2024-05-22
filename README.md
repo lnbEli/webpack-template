@@ -1,5 +1,5 @@
 # Name
 
-Run: npm install webpack webpack-cli --save-dev
+Run: npm run install-deps in root dir
 Main Learnings:
 Summary:
