@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -36,9 +36,9 @@ module.exports = {
       template: "./src/index.html",
     }),
 
-    new CopyPlugin({
-      patterns: [{ from: "./src/img", to: "./img", force: true }],
-    }),
+    // new CopyPlugin({
+    // patterns: [{ from: "./src/img", to: "./img", force: true }],
+    // }),
   ],
   optimization: {
     runtimeChunk: "single",

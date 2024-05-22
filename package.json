@@ -1,7 +1,7 @@
 {
-  "name": "todo-app",
+  "name": "name",
   "version": "1.0.0",
-  "description": "todo app",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,7 +20,5 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
-  "dependencies": {
-    "date-fns": "^3.6.0"
-  }
+  "dependencies": {}
 }
