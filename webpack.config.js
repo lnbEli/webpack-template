@@ -28,9 +28,15 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      // loads images that come from javascript file
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+      },
+      // loads images that come from src tag in html
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -38,13 +44,13 @@ module.exports = {
       },
     ],
   },
-  devtool: "inline-source-map",
+  devtool: "eval-source-map",
   devServer: {
-    static: "./dist",
+    watchFiles: ["./src/index.html"],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Todo App",
+      title: "",
       template: "./src/index.html",
     }),
 
